@@ -1,10 +1,11 @@
-import { FOCUS_MINUTES, TRIGGERS } from "./constants";
+import { FOCUS_MINUTES, TREND_DAYS, TRIGGERS } from "./constants";
 import type { FocusSession, PickupEvent } from "./types";
 import { uid } from "./storage";
 
-// Simulates a realistic week of pickups so the dashboard has something to
-// show right away. This is clearly a demo/simulation feature — it never
-// claims to reflect real device activity (see README).
+// Simulates a realistic stretch of pickups covering the whole trend window, so
+// the dashboard has something to show right away. This is clearly a
+// demo/simulation feature — it never claims to reflect real device activity
+// (see README).
 
 function weightedHour(): number {
   // rough real-world pickup distribution: small morning bump, lunch bump,
@@ -21,7 +22,7 @@ function weightedHour(): number {
 
 export function buildDemoPickups(): PickupEvent[] {
   const pickups: PickupEvent[] = [];
-  for (let offset = 6; offset >= 0; offset--) {
+  for (let offset = TREND_DAYS - 1; offset >= 0; offset--) {
     const count = 15 + Math.floor(Math.random() * 25); // 15-39 pickups/day
     for (let i = 0; i < count; i++) {
       const date = new Date();

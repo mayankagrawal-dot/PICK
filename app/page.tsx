@@ -11,10 +11,10 @@ import { ReasonModal } from "@/components/ReasonModal";
 import { RecentList } from "@/components/RecentList";
 import { StatsGrid } from "@/components/StatsGrid";
 import { TopBar } from "@/components/TopBar";
+import { TrendMap } from "@/components/TrendMap";
 import { UrgeMap } from "@/components/UrgeMap";
-import { WeekMap } from "@/components/WeekMap";
 import { buildDemoFocusSessions, buildDemoPickups } from "@/lib/demoData";
-import { FOCUS_MINUTES, TRIGGERS } from "@/lib/constants";
+import { FOCUS_MINUTES, TREND_DAYS, TRIGGERS } from "@/lib/constants";
 import {
   clearAllData,
   loadFocusSessions,
@@ -177,7 +177,9 @@ export default function DashboardPage() {
 
   function seedDemoData() {
     if (
-      !window.confirm("This replaces your current demo data with a simulated 7-day history. Continue?")
+      !window.confirm(
+        `This replaces your current demo data with a simulated ${TREND_DAYS}-day history. Continue?`
+      )
     ) {
       return;
     }
@@ -210,7 +212,7 @@ export default function DashboardPage() {
         <DashboardHeader streak={streak} onSeedDemo={seedDemoData} />
         <StatsGrid pickups={pickups} />
         <UrgeMap pickups={pickups} />
-        <WeekMap pickups={pickups} />
+        <TrendMap pickups={pickups} />
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.2fr_1fr]">
           <InsightsPanel pickups={pickups} />

@@ -6,6 +6,9 @@ export const FOCUS_KEY = "pick_focus_sessions_v1";
 export const DAILY_GOAL = 30;
 export const FOCUS_MINUTES = 25;
 
+// How many days the pickup trend chart looks back over (including today).
+export const TREND_DAYS = 10;
+
 // "Focus break" is logged automatically when a user breaks a focus sprint,
 // it's not offered as a chip in the reason picker.
 export const TRIGGERS: Trigger[] = [

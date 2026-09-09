@@ -1,4 +1,4 @@
-import { DAILY_GOAL, EXPERIMENTS } from "./constants";
+import { DAILY_GOAL, EXPERIMENTS, TREND_DAYS } from "./constants";
 import type { DayStats, PickupEvent, TrendBadge, Trigger } from "./types";
 
 export function isSameDay(d1: Date, d2: Date): boolean {
@@ -113,16 +113,17 @@ export function computeStreak(pickups: PickupEvent[]): number {
   return streak;
 }
 
-export interface WeekDay {
+export interface TrendDay {
   offset: number;
   count: number;
   label: string;
   isToday: boolean;
 }
 
-export function buildWeekOverview(pickups: PickupEvent[]): WeekDay[] {
-  const days: WeekDay[] = [];
-  for (let offset = 6; offset >= 0; offset--) {
+/** One entry per day over the trend window, oldest first, today last. */
+export function buildTrendOverview(pickups: PickupEvent[]): TrendDay[] {
+  const days: TrendDay[] = [];
+  for (let offset = TREND_DAYS - 1; offset >= 0; offset--) {
     const date = new Date();
     date.setDate(date.getDate() - offset);
     days.push({

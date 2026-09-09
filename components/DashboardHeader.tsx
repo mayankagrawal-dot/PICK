@@ -20,7 +20,7 @@ export function DashboardHeader({ streak, onSeedDemo }: DashboardHeaderProps) {
           {streak > 0 ? `🔥 ${streak}-day streak under your pickup goal` : "🔥 Start your streak today"}
         </div>
       </div>
-      <TextButton onClick={onSeedDemo}>🎲 Load a demo week</TextButton>
+      <TextButton onClick={onSeedDemo}>🎲 Load demo data</TextButton>
     </section>
   );
 }

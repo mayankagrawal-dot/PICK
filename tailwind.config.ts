@@ -14,6 +14,7 @@ const config: Config = {
         lime: "#c8f169",
         pink: "#ff9ecb",
         lavender: "#cbb9f8",
+        "lavender-deep": "#8f6ae4",
         cardline: "rgba(20,18,15,0.08)",
         muted: "#6b6660",
       },
